@@ -1,0 +1,29 @@
+{
+  "name": "pccontroller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-bot": "node index.js",
+    "start-server": "node localServer.js",
+    "dev": "concurrently \"npm run start-server\" \"npm run start-bot\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "chromedriver": "^126.0.5",
+    "express": "^4.19.2",
+    "node-telegram-api": "^0.4.0",
+    "node-telegram-bot-api": "^0.66.0",
+    "nodemon": "^3.1.4",
+    "os-utils": "^0.0.14",
+    "screenshot-desktop": "^1.15.0",
+    "selenium-webdriver": "^4.22.0",
+    "systeminformation": "^5.22.11"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.0"
+  }
+}
