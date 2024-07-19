@@ -2,7 +2,7 @@ const TelegramAPI = require('node-telegram-bot-api');
 const axios = require('axios');
 
 
-const token = '7438547813:AAH9c90rg62f-YXDZLXvwGlQQYWTQjar-As';
+const token = 'YOUR_TOKEN';
 const bot = new TelegramAPI(token, {polling: true});
 
 const screenshot = require('screenshot-desktop');
