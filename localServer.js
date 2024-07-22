@@ -12,62 +12,74 @@ function openForzaHorizon5() {
 }
 
 function openMusic() {
-  const musicPath = 'C:\\Users\\Username\\Music\\music.mp3';
+  const musicPath = 'C:\\Users\\Sidoorenko\\Music\\Big_Baby_Tape_kizaru_-_Big_Tymers_(musmore.com).mp3';
   exec(`start "" "${musicPath}"`);
 }
 
 // Открытие списка с действиями
-app.get('/action_list', (res) => res.send('Действие успешно выполнено'));
+app.get('/action_list', (req, res) => res.send('Действие успешно выполнено'));
 
 // Закрытие списка с действиями
-app.get('/close_menu', (res) => res.send('Меню закрыто'));
+app.get('/close_menu', (req, res) => res.send('Меню закрыто'));
 
 // Включить музыку
-app.get('/music', (res) => {
+app.get('/music', (req, res) => {
   openMusic();
   res.send('Врубаю музыку.');
 });
 
 // Открыть Google
-app.get('/open_google', (res) => {
+app.get('/open_google', (req, res) => {
   exec('start http://www.google.com', (error) => {
-    error && res.status(500).send('Произошла ошибка при попытке открыть Google.');
-    res.send('Google открыт.');
+    if (error) {
+      res.status(500).send('Произошла ошибка при попытке открыть Google.');
+    } else {
+      res.send('Google открыт.');
+    }
   });
 });
 
 // Открыть Chat GPT
-app.get('/open_gpt', (res) => {
+app.get('/open_gpt', (req, res) => {
   exec('start https://chatgpt.com/', (error) => {
-    error && res.status(500).send('Произошла ошибка при попытке открыть GPT.');
-    res.send('GPT чат открыт.');
+    if (error) {
+      res.status(500).send('Произошла ошибка при попытке открыть GPT.');
+    } else {
+      res.send('GPT чат открыт.');
+    }
   });
 });
 
 // Открыть Spotify
-app.get('/open_spotify', (res) => {
+app.get('/open_spotify', (req, res) => {
   exec('start https://open.spotify.com/', (error) => {
-    error && res.status(500).send('Произошла ошибка при попытке открыть Spotify.');
-    res.send('Spotify открыт.');
+    if (error) {
+      res.status(500).send('Произошла ошибка при попытке открыть Spotify.');
+    } else {
+      res.send('Spotify открыт.');
+    }
   });
 });
 
 // Открыть YouTube
-app.get('/open_youtube', (res) => {
+app.get('/open_youtube', (req, res) => {
   exec('start https://m.youtube.com/', (error) => {
-    error && res.status(500).send('Произошла ошибка при попытке открыть YouTube.');
-    res.send('YouTube открыт.');
+    if (error) {
+      res.status(500).send('Произошла ошибка при попытке открыть YouTube.');
+    } else {
+      res.send('YouTube открыт.');
+    }
   });
 });
 
 // Открыть Forza Horizon 5
-app.get('/open_forza5', (res) => {
+app.get('/open_forza5', (req, res) => {
   openForzaHorizon5();
   res.send('Открываю игру Forza Horizon 5...');
 });
 
 // Получить данные о системе
-app.get('/system_info', async (res) => {
+app.get('/system_info', async (req, res) => {
   try {
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
